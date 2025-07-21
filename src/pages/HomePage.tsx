@@ -123,7 +123,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                   
                   {/* Main Card */}
-                  <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-12 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-700 transform group-hover:-translate-y-2 group-hover:scale-[1.02] overflow-hidden">
+                  <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-12 border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-700 transform group-hover:-translate-y-2 group-hover:scale-[1.02] overflow-hidden before:absolute before:inset-0 before:rounded-3xl before:bg-gradient-to-r before:from-blue-500/10 before:via-purple-500/10 before:to-pink-500/10 before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-500">
                     {/* Floating Particles */}
                     <div className="absolute top-8 right-8 w-4 h-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-500" style={{ animationDelay: '0.2s' }}></div>
                     <div className="absolute top-16 right-16 w-3 h-3 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-700" style={{ animationDelay: '0.4s' }}></div>
@@ -131,8 +131,8 @@ export default function HomePage() {
                     <div className="absolute bottom-16 left-16 w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-800" style={{ animationDelay: '0.3s' }}></div>
                     
                     {/* Gradient Border Effect */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-sm" style={{ borderRadius: '1.5rem' }}></div>
-                    <div className="absolute inset-[1px] bg-white/95 backdrop-blur-md -z-10" style={{ borderRadius: '1.5rem' }}></div>
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-sm"></div>
+                    <div className="absolute inset-[1px] bg-white/95 backdrop-blur-md rounded-3xl -z-10"></div>
                     
                     {/* Content */}
                     <div className="relative z-10">
@@ -153,7 +153,12 @@ export default function HomePage() {
                       
                       {/* Enhanced Button */}
                       <button 
-                        onClick={() => window.location.href = '/products'}
+                        onClick={() => {
+                          const productsSection = document.getElementById('all-products');
+                          if (productsSection) {
+                            productsSection.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
                         className="group/btn relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-16 py-5 rounded-2xl font-bold text-lg hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl flex items-center gap-4 mx-auto overflow-hidden"
                       >
                         {/* Button Background Animation */}
@@ -190,7 +195,7 @@ export default function HomePage() {
                     </div>
                     
                     {/* Ripple Effect */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse -z-10"></div>
                   </div>
                 </div>
               </div>
