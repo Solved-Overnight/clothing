@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle, Headphones, CheckCircle, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle, Headphones, CheckCircle, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { useNotification } from '../context/NotificationContext';
 
 const contactInfo = [
@@ -57,6 +57,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const { addNotification } = useNotification();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -201,12 +202,7 @@ export default function ContactPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      focusedField === 'name' ? 'text-blue-600' : 'text-gray-700'
-                    }`}>
-                      Full Name *
-                    </label>
-                    <div className="relative">
+                    <div className="relative group">
                       <input
                       type="text"
                       name="name"
@@ -215,22 +211,21 @@ export default function ContactPage() {
                         onFocus={() => setFocusedField('name')}
                         onBlur={() => setFocusedField(null)}
                       required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white focus:bg-white"
-                      placeholder="Your full name"
+                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white peer"
+                        placeholder=" "
                     />
-                      {focusedField === 'name' && (
-                        <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
-                      )}
+                      <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                        focusedField === 'name' || formData.name
+                          ? 'top-2 text-xs text-blue-600 font-medium'
+                          : 'top-4 text-base text-gray-500'
+                      }`}>
+                        Full Name *
+                      </label>
                     </div>
                   </div>
                   
                   <div>
-                    <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                      focusedField === 'email' ? 'text-blue-600' : 'text-gray-700'
-                    }`}>
-                      Email Address *
-                    </label>
-                    <div className="relative">
+                    <div className="relative group">
                       <input
                       type="email"
                       name="email"
@@ -239,23 +234,22 @@ export default function ContactPage() {
                         onFocus={() => setFocusedField('email')}
                         onBlur={() => setFocusedField(null)}
                       required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white focus:bg-white"
-                      placeholder="your@email.com"
+                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white peer"
+                        placeholder=" "
                     />
-                      {focusedField === 'email' && (
-                        <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
-                      )}
+                      <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                        focusedField === 'email' || formData.email
+                          ? 'top-2 text-xs text-blue-600 font-medium'
+                          : 'top-4 text-base text-gray-500'
+                      }`}>
+                        Email Address *
+                      </label>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                    focusedField === 'subject' ? 'text-blue-600' : 'text-gray-700'
-                  }`}>
-                    Subject *
-                  </label>
-                  <div className="relative">
+                  <div className="relative group">
                     <select
                     name="subject"
                     value={formData.subject}
@@ -263,7 +257,7 @@ export default function ContactPage() {
                       onFocus={() => setFocusedField('subject')}
                       onBlur={() => setFocusedField(null)}
                     required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white/50 backdrop-blur-sm hover:bg-white focus:bg-white"
+                      className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white appearance-none"
                   >
                     <option value="">Select a subject</option>
                     <option value="General Inquiry">General Inquiry</option>
@@ -273,19 +267,21 @@ export default function ContactPage() {
                     <option value="Partnership">Partnership Opportunity</option>
                     <option value="Press & Media">Press & Media</option>
                   </select>
-                    {focusedField === 'subject' && (
-                      <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
-                    )}
+                    <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                      focusedField === 'subject' || formData.subject
+                        ? 'top-2 text-xs text-blue-600 font-medium'
+                        : 'top-4 text-base text-gray-500'
+                    }`}>
+                      Subject *
+                    </label>
+                    <div className="absolute right-4 top-4 pointer-events-none">
+                      <ChevronDown className="h-5 w-5 text-gray-400" />
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 transition-colors duration-300 ${
-                    focusedField === 'message' ? 'text-blue-600' : 'text-gray-700'
-                  }`}>
-                    Message *
-                  </label>
-                  <div className="relative">
+                  <div className="relative group">
                     <textarea
                     name="message"
                     value={formData.message}
@@ -294,12 +290,16 @@ export default function ContactPage() {
                       onBlur={() => setFocusedField(null)}
                     required
                     rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none bg-white/50 backdrop-blur-sm hover:bg-white focus:bg-white"
-                    placeholder="Tell us how we can help you..."
+                      className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 resize-none bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white"
+                      placeholder=" "
                   />
-                    {focusedField === 'message' && (
-                      <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 animate-pulse"></div>
-                    )}
+                    <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                      focusedField === 'message' || formData.message
+                        ? 'top-2 text-xs text-blue-600 font-medium'
+                        : 'top-4 text-base text-gray-500'
+                    }`}>
+                      Message *
+                    </label>
                   </div>
                 </div>
 
@@ -347,18 +347,39 @@ export default function ContactPage() {
 
                   <div className="space-y-6">
                 {faqs.map((faq, index) => (
-                    <div 
+                    <div
                       key={index} 
-                      className="group bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-white/50 hover:border-green-200"
+                      className="group bg-white/60 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-white/50 hover:border-green-200 overflow-hidden"
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="bg-gradient-to-r from-green-500 to-teal-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300">
-                          <CheckCircle className="h-4 w-4 text-white" />
+                      <button
+                        onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                        className="w-full p-6 text-left hover:bg-white/20 transition-colors duration-300"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="bg-gradient-to-r from-green-500 to-teal-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                              <CheckCircle className="h-4 w-4 text-white" />
+                            </div>
+                            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">{faq.question}</h3>
+                          </div>
+                          <div className="flex-shrink-0 ml-4">
+                            {expandedFaq === index ? (
+                              <ChevronUp className="h-5 w-5 text-gray-500 group-hover:text-green-600 transition-all duration-300" />
+                            ) : (
+                              <ChevronDown className="h-5 w-5 text-gray-500 group-hover:text-green-600 transition-all duration-300" />
+                            )}
+                          </div>
                         </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">{faq.question}</h3>
-                          <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{faq.answer}</p>
+                      </button>
+                      
+                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        expandedFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                      }`}>
+                        <div className="px-6 pb-6">
+                          <div className="pl-9">
+                            <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">{faq.answer}</p>
+                          </div>
                         </div>
                       </div>
                   </div>

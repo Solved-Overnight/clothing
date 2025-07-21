@@ -153,12 +153,7 @@ export default function HomePage() {
                       
                       {/* Enhanced Button */}
                       <button 
-                        onClick={() => {
-                          const productsSection = document.getElementById('all-products');
-                          if (productsSection) {
-                            productsSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }}
+                        onClick={() => window.location.href = '/products'}
                         className="group/btn relative bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-16 py-5 rounded-2xl font-bold text-lg hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 transition-all duration-500 transform hover:scale-110 shadow-xl hover:shadow-2xl flex items-center gap-4 mx-auto overflow-hidden"
                       >
                         {/* Button Background Animation */}
