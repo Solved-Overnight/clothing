@@ -6,19 +6,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    details: 'hello@arvana.com',
+    details: 'arvana.info@gmail.com',
     description: 'Send us an email anytime'
   },
   {
     icon: Phone,
     title: 'Call Us',
-    details: '+1 (555) 123-4567',
-    description: 'Mon-Fri from 8am to 6pm'
+    details: '+880 1710237055',
+    description: 'Mon-Fri from 9am to 6pm'
   },
   {
     icon: MapPin,
     title: 'Visit Us',
-    details: '123 Fashion Street, NY 10001',
+    details: 'Dhaka, Bangladesh',
     description: 'Come visit our flagship store'
   },
   {
