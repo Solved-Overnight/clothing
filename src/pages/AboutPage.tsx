@@ -149,7 +149,7 @@ const team = [
   {
     name: 'Michael Chen',
     role: 'Creative Director',
-    image: 'https://raw.githubusercontent.com/Solved-Overnight/arvana-clothing/refs/heads/main/img/profile/profile1.png',
+    image: 'https://raw.githubusercontent.com/Solved-Overnight/arvana-clothing/refs/heads/main/img/profile/profile1.jpg',
     description: 'Award-winning designer passionate about sustainable fashion'
   },
   {
