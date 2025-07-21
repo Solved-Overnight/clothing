@@ -143,19 +143,19 @@ const team = [
   {
     name: 'Sarah Johnson',
     role: 'Founder & CEO',
-    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://raw.githubusercontent.com/Solved-Overnight/arvana-clothing/refs/heads/main/img/profile/profile4.png',
     description: 'Visionary leader with 15+ years in fashion industry'
   },
   {
     name: 'Michael Chen',
     role: 'Creative Director',
-    image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://raw.githubusercontent.com/Solved-Overnight/arvana-clothing/refs/heads/main/img/profile/profile1.png',
     description: 'Award-winning designer passionate about sustainable fashion'
   },
   {
     name: 'Emma Rodriguez',
     role: 'Head of Operations',
-    image: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://raw.githubusercontent.com/Solved-Overnight/arvana-clothing/refs/heads/main/img/profile/profile2.png',
     description: 'Operations expert ensuring quality and customer satisfaction'
   }
 ];
