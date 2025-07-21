@@ -131,8 +131,8 @@ export default function HomePage() {
                     <div className="absolute bottom-16 left-16 w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-800" style={{ animationDelay: '0.3s' }}></div>
                     
                     {/* Gradient Border Effect */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-sm"></div>
-                    <div className="absolute inset-[1px] rounded-3xl bg-white/95 backdrop-blur-md -z-10"></div>
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10 blur-sm" style={{ borderRadius: '1.5rem' }}></div>
+                    <div className="absolute inset-[1px] bg-white/95 backdrop-blur-md -z-10" style={{ borderRadius: '1.5rem' }}></div>
                     
                     {/* Content */}
                     <div className="relative z-10">
