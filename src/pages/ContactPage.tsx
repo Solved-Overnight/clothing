@@ -202,7 +202,7 @@ export default function ContactPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <div className="relative group">
+                    <div className="relative">
                       <input
                       type="text"
                       name="name"
@@ -211,13 +211,13 @@ export default function ContactPage() {
                         onFocus={() => setFocusedField('name')}
                         onBlur={() => setFocusedField(null)}
                       required
-                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white peer"
+                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
                         placeholder=" "
                     />
-                      <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                      <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                         focusedField === 'name' || formData.name
-                          ? 'top-2 text-xs text-blue-600 font-medium'
-                          : 'top-4 text-base text-gray-500'
+                          ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                          : 'top-4 text-base text-gray-500 transform translate-y-0'
                       }`}>
                         Full Name *
                       </label>
@@ -225,7 +225,7 @@ export default function ContactPage() {
                   </div>
                   
                   <div>
-                    <div className="relative group">
+                    <div className="relative">
                       <input
                       type="email"
                       name="email"
@@ -234,13 +234,13 @@ export default function ContactPage() {
                         onFocus={() => setFocusedField('email')}
                         onBlur={() => setFocusedField(null)}
                       required
-                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white peer"
+                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
                         placeholder=" "
                     />
-                      <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                      <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                         focusedField === 'email' || formData.email
-                          ? 'top-2 text-xs text-blue-600 font-medium'
-                          : 'top-4 text-base text-gray-500'
+                          ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                          : 'top-4 text-base text-gray-500 transform translate-y-0'
                       }`}>
                         Email Address *
                       </label>
@@ -249,7 +249,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <div className="relative group">
+                  <div className="relative">
                     <select
                     name="subject"
                     value={formData.subject}
@@ -257,7 +257,7 @@ export default function ContactPage() {
                       onFocus={() => setFocusedField('subject')}
                       onBlur={() => setFocusedField(null)}
                     required
-                      className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white appearance-none"
+                      className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white appearance-none"
                   >
                     <option value="">Select a subject</option>
                     <option value="General Inquiry">General Inquiry</option>
@@ -267,10 +267,10 @@ export default function ContactPage() {
                     <option value="Partnership">Partnership Opportunity</option>
                     <option value="Press & Media">Press & Media</option>
                   </select>
-                    <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                    <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                       focusedField === 'subject' || formData.subject
-                        ? 'top-2 text-xs text-blue-600 font-medium'
-                        : 'top-4 text-base text-gray-500'
+                        ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                        : 'top-4 text-base text-gray-500 transform translate-y-0'
                     }`}>
                       Subject *
                     </label>
@@ -281,7 +281,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <div className="relative group">
+                  <div className="relative">
                     <textarea
                     name="message"
                     value={formData.message}
@@ -290,13 +290,13 @@ export default function ContactPage() {
                       onBlur={() => setFocusedField(null)}
                     required
                     rows={6}
-                      className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-300 resize-none bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white"
+                      className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 resize-none bg-white"
                       placeholder=" "
                   />
-                    <label className={`absolute left-4 transition-all duration-300 pointer-events-none ${
+                    <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
                       focusedField === 'message' || formData.message
-                        ? 'top-2 text-xs text-blue-600 font-medium'
-                        : 'top-4 text-base text-gray-500'
+                        ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                        : 'top-4 text-base text-gray-500 transform translate-y-0'
                     }`}>
                       Message *
                     </label>

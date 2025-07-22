@@ -66,6 +66,16 @@ export default function Header({ onCartClick, onWishlistClick, onProfileClick }:
               </Link>
             ))}
             
+            {/* Flash Sale Link */}
+            <Link
+              to="/flash-sale"
+              className="text-red-600 hover:text-red-700 transition-all duration-300 font-medium relative group py-2 flex items-center gap-2 animate-pulse"
+            >
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+              Flash Sale
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            
             {/* Admin Link - Only show if authenticated */}
             {authState.isAuthenticated && (
               <Link
@@ -162,24 +172,32 @@ export default function Header({ onCartClick, onWishlistClick, onProfileClick }:
 
         {/* Search Bar */}
         {isSearchOpen && (
-          <div className="py-4 border-t border-gray-200 animate-slide-in">
+          <div className="py-4 border-t border-gray-200 transform transition-all duration-500 ease-out animate-in slide-in-from-top-2">
             <div className="relative">
               <input
                 type="text"
                 value={searchQuery}
                 placeholder="Search products..."
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-300"
+                className="w-full px-4 py-3 pl-12 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-white shadow-lg"
                 autoFocus
               />
-              <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              <Search className="absolute left-4 top-3.5 h-5 w-5 text-gray-400" />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-3.5 text-gray-400 hover:text-gray-600"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              )}
             </div>
           </div>
         )}
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 animate-slide-in">
+          <div className="md:hidden py-4 border-t border-gray-200 transform transition-all duration-300 ease-out animate-in slide-in-from-top-2">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -193,6 +211,16 @@ export default function Header({ onCartClick, onWishlistClick, onProfileClick }:
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Flash Sale */}
+              <Link
+                to="/flash-sale"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-left text-red-600 hover:text-red-700 hover:bg-red-50 px-4 py-2 rounded-lg transition-all duration-300 font-medium flex items-center gap-2"
+              >
+                <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+                Flash Sale
+              </Link>
             </nav>
           </div>
         )}
