@@ -189,154 +189,150 @@ export default function ContactPage() {
               <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="bg-gradient-to-r from-blue-500 to-purple-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
-                  <MessageCircle className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900">Send us a Message</h2>
-                  <p className="text-gray-600">We'll get back to you within 24 hours</p>
-                </div>
-              </div>
-
-              <form onSubmit={handleSubmit} name="contact" method="POST" data-netlify="true" className="space-y-6">
-                <input type="hidden" name="form-name" value="contact" />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                  <div className="relative group">
-                      <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
-                      required
-                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
-                        placeholder=" "
-                    />
-                      <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                        focusedField === 'name' || formData.name
-                          ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
-                          : 'top-4 text-base text-gray-500 transform translate-y-0'
-                      }`}>
-                        Full Name *
-                      </label>
-                    </div>
+                    <MessageCircle className="h-6 w-6 text-white" />
                   </div>
+                  <div>
+                    <h2 className="text-3xl font-bold text-gray-900">Send us a Message</h2>
+                    <p className="text-gray-600">We'll get back to you within 24 hours</p>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} name="contact" method="POST" data-netlify="true" className="space-y-6">
+                  <input type="hidden" name="form-name" value="contact" />
                   
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <div className="relative group">
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          onFocus={() => setFocusedField('name')}
+                          onBlur={() => setFocusedField(null)}
+                          required
+                          className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
+                          placeholder=" "
+                        />
+                        <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'name' || formData.name
+                            ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                            : 'top-4 text-base text-gray-500 transform translate-y-0'
+                        }`}>
+                          Full Name *
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div className="relative">
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          onFocus={() => setFocusedField('email')}
+                          onBlur={() => setFocusedField(null)}
+                          required
+                          className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
+                          placeholder=" "
+                        />
+                        <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'email' || formData.email
+                            ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                            : 'top-4 text-base text-gray-500 transform translate-y-0'
+                        }`}>
+                          Email Address *
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
                   <div>
-                    <div className="relative">
-                      <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                        onFocus={() => setFocusedField('email')}
+                    <div className="relative group">
+                      <select
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        onFocus={() => setFocusedField('subject')}
                         onBlur={() => setFocusedField(null)}
-                      required
-                        className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
+                        required
+                        className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-200 bg-white appearance-none"
+                        id="subject"
+                      >
+                        <option value="">Select a subject</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Order Support">Order Support</option>
+                        <option value="Product Question">Product Question</option>
+                        <option value="Returns & Exchanges">Returns & Exchanges</option>
+                        <option value="Partnership">Partnership Opportunity</option>
+                        <option value="Press & Media">Press & Media</option>
+                      </select>
+                      <label 
+                        htmlFor="subject"
+                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'subject' || formData.subject
+                            ? '-top-2 text-xs text-blue-600 font-medium bg-white px-2'
+                            : 'top-4 text-base text-gray-500'
+                        }`}
+                      >
+                        Subject *
+                      </label>
+                      <div className="absolute right-4 top-4 pointer-events-none">
+                        <ChevronDown className="h-5 w-5 text-gray-400" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="relative group">
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        onFocus={() => setFocusedField('message')}
+                        onBlur={() => setFocusedField(null)}
+                        required
+                        rows={6}
+                        className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none bg-white placeholder-transparent"
                         placeholder=" "
-                    />
-                      <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                        focusedField === 'email' || formData.email
-                          ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
-                          : 'top-4 text-base text-gray-500 transform translate-y-0'
-                      }`}>
-                        Email Address *
+                        id="message"
+                      />
+                      <label 
+                        htmlFor="message"
+                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'message' || formData.message
+                            ? '-top-2 text-xs text-blue-600 font-medium bg-white px-2'
+                            : 'top-4 text-base text-gray-500'
+                        }`}
+                      >
+                        Message *
                       </label>
                     </div>
                   </div>
-                </div>
 
-                <div>
-                  <div className="relative group">
-                    <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                      onFocus={() => setFocusedField('subject')}
-                      onBlur={() => setFocusedField(null)}
-                    required
-                      className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-200 bg-white appearance-none"
-                      id="subject"
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
                   >
-                    <option value="">Select a subject</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Order Support">Order Support</option>
-                    <option value="Product Question">Product Question</option>
-                    <option value="Returns & Exchanges">Returns & Exchanges</option>
-                    <option value="Partnership">Partnership Opportunity</option>
-                    <option value="Press & Media">Press & Media</option>
-                  </select>
-                    <label 
-                      htmlFor="subject"
-                      className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                        focusedField === 'subject' || formData.subject
-                          ? '-top-2 text-xs text-blue-600 font-medium bg-white px-2'
-                          : 'top-4 text-base text-gray-500'
-                      }`}
-                    >
-                      Subject *
-                    </label>
-                    <div className="absolute right-4 top-4 pointer-events-none">
-                      <ChevronDown className="h-5 w-5 text-gray-400" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10 flex items-center gap-3">
+                      {isSubmitting ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-5 w-5" />
+                          Send Message
+                          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+                        </>
+                      )}
                     </div>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="relative group">
-                    <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                      onFocus={() => setFocusedField('message')}
-                      onBlur={() => setFocusedField(null)}
-                    required
-                    rows={6}
-                      className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none bg-white placeholder-transparent"
-                      placeholder=" "
-                      id="message"
-                      id="name"
-                  />
-                    <label 
-                      htmlFor="name"
-                      className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                    <label 
-                      htmlFor="message"
-                      className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                        focusedField === 'message' || formData.message
-                          ? '-top-2 text-xs text-blue-600 font-medium bg-white px-2'
-                          : 'top-4 text-base text-gray-500'
-                      }`}
-                    >
-                      Message *
-                    </label>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="relative z-10 flex items-center gap-3">
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5" />
-                      Send Message
-                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </>
-                  )}
-                  </div>
-                </button>
-              </form>
+                  </button>
+                </form>
               </div>
             </div>
 
@@ -347,60 +343,55 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-teal-500/10 to-blue-500/10 rounded-3xl blur-xl"></div>
                 
                 <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/50">
-                  <div className="relative group">
+                  <div className="flex items-center gap-3 mb-8">
                     <div className="bg-gradient-to-r from-green-500 to-teal-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
-                  <Headphones className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
-                  <p className="text-gray-600">Quick answers to common questions</p>
-                </div>
-              </div>
+                      <Headphones className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+                      <p className="text-gray-600">Quick answers to common questions</p>
+                    </div>
+                  </div>
 
                   <div className="space-y-6">
-                {faqs.map((faq, index) => (
-                    <div
-                      key={index} 
-                      className="group bg-white/60 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-white/50 hover:border-green-200 overflow-hidden"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <button
-                        onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
-                        className="w-full p-6 text-left hover:bg-white/20 transition-colors duration-300"
+                    {faqs.map((faq, index) => (
+                      <div
+                        key={index} 
+                        className="group bg-white/60 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-500 border border-white/50 hover:border-green-200 overflow-hidden"
+                        style={{ animationDelay: `${index * 0.1}s` }}
                       >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className="bg-gradient-to-r from-green-500 to-teal-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                              <CheckCircle className="h-4 w-4 text-white" />
+                        <button
+                          onClick={() => setExpandedFaq(expandedFaq === index ? null : index)}
+                          className="w-full p-6 text-left hover:bg-white/20 transition-colors duration-300"
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className="bg-gradient-to-r from-green-500 to-teal-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                <CheckCircle className="h-4 w-4 text-white" />
+                              </div>
+                              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">{faq.question}</h3>
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition-colors duration-300">{faq.question}</h3>
+                            <div className="flex-shrink-0 ml-4">
+                              {expandedFaq === index ? (
+                                <ChevronUp className="h-5 w-5 text-gray-500 group-hover:text-green-600 transition-all duration-300" />
+                              ) : (
+                                <ChevronDown className="h-5 w-5 text-gray-500 group-hover:text-green-600 transition-all duration-300" />
+                              )}
+                            </div>
                           </div>
-                          <div className="flex-shrink-0 ml-4">
-                            {expandedFaq === index ? (
-                              <ChevronUp className="h-5 w-5 text-gray-500 group-hover:text-green-600 transition-all duration-300" />
-                            ) : (
-                              <ChevronDown className="h-5 w-5 text-gray-500 group-hover:text-green-600 transition-all duration-300" />
-                            )}
-                      onFocus={() => setFocusedField('email')}
-                      onBlur={() => setFocusedField(null)}
-                      </button>
-                      className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-200 bg-white peer placeholder-transparent"
-                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                      id="email"
-                        expandedFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                    <label 
-                      htmlFor="email"
-                      className={`absolute left-4 transition-all duration-200 pointer-events-none ${
-                        focusedField === 'email' || formData.email
-                          ? '-top-2 text-xs text-blue-600 font-medium bg-white px-2'
-                          : 'top-4 text-base text-gray-500'
-                      }`}
-                    >
+                        </button>
+                        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                          expandedFaq === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                        }`}>
+                          <div className="px-6 pb-6">
+                            <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-4 border-l-4 border-green-500">
+                              <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    ))}
                   </div>
-                ))}
-              </div>
 
                   <div className="mt-8 relative overflow-hidden bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-100 hover:shadow-lg transition-all duration-300 group">
                     {/* Animated Background */}
@@ -409,26 +400,26 @@ export default function ContactPage() {
                     <div className="relative z-10">
                       <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">Still have questions?</h3>
                       <p className="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">
-                  Can't find what you're looking for? Our customer support team is here to help.
-                </p>
+                        Can't find what you're looking for? Our customer support team is here to help.
+                      </p>
                       <div className="flex flex-col sm:flex-row gap-3">
-                  <a
-                    href="mailto:hello@arvana.com"
-                        className="group/btn bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 text-center transform hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
-                  >
-                        <Mail className="h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
-                    Email Support
-                  </a>
-                  <a
-                    href="tel:+15551234567"
-                        className="group/btn border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 text-center transform hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
-                  >
-                        <Phone className="h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
-                    Call Us
-                  </a>
-                </div>
+                        <a
+                          href="mailto:hello@arvana.com"
+                          className="group/btn bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 text-center transform hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                        >
+                          <Mail className="h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
+                          Email Support
+                        </a>
+                        <a
+                          href="tel:+15551234567"
+                          className="group/btn border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-all duration-300 text-center transform hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                        >
+                          <Phone className="h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
+                          Call Us
+                        </a>
+                      </div>
                     </div>
-              </div>
+                  </div>
                 </div>
               </div>
             </div>
