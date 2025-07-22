@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, Star, ShoppingBag, Heart, Zap, Fire, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Clock, Star, ShoppingBag, Heart, Zap, Siren as Fire, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import ProductModal from '../components/ProductModal';
 import { Product } from '../types';
