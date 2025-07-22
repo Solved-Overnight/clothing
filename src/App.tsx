@@ -7,6 +7,7 @@ import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 import HomePage from './pages/HomePage';
 import AllProductsPage from './pages/AllProductsPage';
+import FlashSalePage from './pages/FlashSalePage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import AdminPanel from './pages/AdminPanel';
@@ -18,6 +19,7 @@ function AppContent() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="products" element={<AllProductsPage />} />
+        <Route path="flash-sale" element={<FlashSalePage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
       </Route>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ShoppingBag, User, Menu, X, Heart, Settings } from 'lucide-react';
+import { Search, ShoppingBag, User, Menu, X, Heart, Settings, Fire } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useAuth } from '../context/AuthContext';
@@ -71,7 +71,7 @@ export default function Header({ onCartClick, onWishlistClick, onProfileClick }:
               to="/flash-sale"
               className="text-red-600 hover:text-red-700 transition-all duration-300 font-medium relative group py-2 flex items-center gap-2 animate-pulse"
             >
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+              <Fire className="h-4 w-4 animate-bounce" />
               Flash Sale
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
@@ -216,9 +216,9 @@ export default function Header({ onCartClick, onWishlistClick, onProfileClick }:
               <Link
                 to="/flash-sale"
                 onClick={() => setIsMenuOpen(false)}
-                className="text-left text-red-600 hover:text-red-700 hover:bg-red-50 px-4 py-2 rounded-lg transition-all duration-300 font-medium flex items-center gap-2"
+                className="text-left text-red-600 hover:text-red-700 hover:bg-red-50 px-4 py-2 rounded-lg transition-all duration-300 font-medium flex items-center gap-2 animate-pulse"
               >
-                <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+                <Fire className="h-4 w-4 animate-bounce" />
                 Flash Sale
               </Link>
             </nav>
