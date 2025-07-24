@@ -202,20 +202,23 @@ export default function ContactPage() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <div className="relative">
+                      <div className="relative group">
                         <input
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
+                          onFocus={() => setFocusedField('name')}
+                          onBlur={() => setFocusedField(null)}
                           required
-                          className="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                          placeholder="Full Name"
+                          className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
+                          placeholder=" "
                         />
-                        <label
-                          htmlFor="name"
-                          className="absolute left-4 top-2 text-gray-500 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-600"
-                        >
+                        <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'name' || formData.name
+                            ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                            : 'top-4 text-base text-gray-500 transform translate-y-0'
+                        }`}>
                           Full Name *
                         </label>
                       </div>
@@ -228,17 +231,21 @@ export default function ContactPage() {
                           name="email"
                           value={formData.email}
                           onChange={handleInputChange}
+                          onFocus={() => setFocusedField('email')}
+                          onBlur={() => setFocusedField(null)}
                           required
-                          className="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500 transition-all duration-300"
-                          placeholder="Email Address"
+                          className="w-full px-4 pt-6 pb-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-0 transition-all duration-300 bg-white peer"
+                          placeholder=" "
                         />
-                        <label
-                          htmlFor="email"
-                          className="absolute left-4 top-2 text-gray-500 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-600"
-                        >
+                        <label className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'email' || formData.email
+                            ? 'top-1 text-xs text-blue-600 font-medium transform -translate-y-0'
+                            : 'top-4 text-base text-gray-500 transform translate-y-0'
+                        }`}>
                           Email Address *
                         </label>
                       </div>
+                    </div>
                   </div>
 
                   <div>
@@ -278,19 +285,26 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <div className="relative">
+                    <div className="relative group">
                       <textarea
                         name="message"
-                        rows={6}
                         value={formData.message}
                         onChange={handleInputChange}
+                        onFocus={() => setFocusedField('message')}
+                        onBlur={() => setFocusedField(null)}
                         required
-                        className="peer w-full border border-gray-300 rounded-lg px-4 pt-5 pb-2 text-gray-900 placeholder-transparent focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none"
-                        placeholder="Your message"
+                        rows={6}
+                        className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-all duration-200 resize-none bg-white placeholder-transparent"
+                        placeholder=" "
+                        id="message"
                       />
-                      <label
+                      <label 
                         htmlFor="message"
-                        className="absolute left-4 top-2 text-gray-500 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-blue-600"
+                        className={`absolute left-4 transition-all duration-200 pointer-events-none ${
+                          focusedField === 'message' || formData.message
+                            ? '-top-2 text-xs text-blue-600 font-medium bg-white px-2'
+                            : 'top-4 text-base text-gray-500'
+                        }`}
                       >
                         Message *
                       </label>
